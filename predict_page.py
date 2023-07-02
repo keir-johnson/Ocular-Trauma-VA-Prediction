@@ -67,7 +67,7 @@ st.write("Enter the following details to predict the visual acuity:")
 
 # User inputs
 age = st.number_input("Age", min_value=0, max_value=150, value=30, step=1)
-time = st.number_input("Time Since Injury (in hours)", min_value=0, max_value=1000, value=6, step=1)
+time = st.number_input("Time to Operating Room (minutes)", min_value=0, max_value=10000, value=30, step=1)
 presenting_va = st.number_input("Presenting Visual Acuity (LogMAR)", min_value=0.0, max_value=4.0, value=1.0, step=0.1)
 last_follow_up = st.number_input("Time of Last Follow-up (in days)", min_value=0, max_value=365, value=30, step=1)
 sex = st.selectbox("Sex", ["Male", "Female"])
