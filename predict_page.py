@@ -298,8 +298,8 @@ if ok:
         metal_binary = 1
     else:
         metal_binary = 0
-   X = [age, time, presenting_va, last_follow_up, sex_binary, eye_binary, rupture_binary, penetration_binary, perforation_binary, endophthalmitis_binary, retinal_detachment_binary, apd_binary, iofb_binary, zone_i_binary, zone_ii_binary, zone_iii_binary, lensectomy_binary, uveal_prolapse_binary, white_binary, black_binary, asian_binary, indian_binary, hawaiian_binary, hispanic_binary, fall_binary, projectile_binary, nail_binary, blunt_binary, glass_binary, assault_binary, wood_binary, mvc_binary, wire_binary, knife_binary, metal_binary]
-   X_array = np.array(X)
+    X = [age, time, presenting_va, last_follow_up, sex_binary, eye_binary, rupture_binary, penetration_binary, perforation_binary, endophthalmitis_binary, retinal_detachment_binary, apd_binary, iofb_binary, zone_i_binary, zone_ii_binary, zone_iii_binary, lensectomy_binary, uveal_prolapse_binary, white_binary, black_binary, asian_binary, indian_binary, hawaiian_binary, hispanic_binary, fall_binary, projectile_binary, nail_binary, blunt_binary, glass_binary, assault_binary, wood_binary, mvc_binary, wire_binary, knife_binary, metal_binary]
+    X_array = np.array(X)
     names = [
  #continuous inputs
     'Age at time of injury', 
