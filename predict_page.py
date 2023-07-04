@@ -1,103 +1,322 @@
 import streamlit as st
-import pandas as pd
-import numpy as np
 import pickle
+import numpy as np 
+import pandas as pd
 
-# Load the machine learning model and data
-with open("saved_steps.pkl", "rb") as file:
-    regressor = pickle.load(file)
+def load_model():
+    with open('saved_steps.pkl', 'rb') as file:
+        data = pickle.load(file)
+    return data
 
-# Function to preprocess the input and predict the visual acuity
-def predict_visual_acuity(age, time, presenting_va, last_follow_up, sex, eye, rupture, penetration, perforation,
-                          endophthalmitis, retinal_detachment, apd, iofb, zone_of_injury, lensectomy,
-                          uveal_prolapse, race, fall, projectile, nail, blunt, glass, assault, wood,
-                          mvc, wire, knife, metal):
-    # Binary encoding
-    sex_binary = 1 if sex == "Male" else 0
-    eye_binary = 1 if eye == "OD" else 0
-    rupture_binary = 1 if rupture == "Yes" else 0
-    penetration_binary = 1 if penetration == "Yes" else 0
-    perforation_binary = 1 if perforation == "Yes" else 0
-    endophthalmitis_binary = 1 if endophthalmitis == "Yes" else 0
-    retinal_detachment_binary = 1 if retinal_detachment == "Yes" else 0
-    apd_binary = 1 if apd == "Yes" else 0
-    iofb_binary = 1 if iofb == "Yes" else 0
-    zone_i_binary = 1 if zone_of_injury == "Zone I" else 0
-    zone_ii_binary = 1 if zone_of_injury == "Zone II" else 0
-    zone_iii_binary = 1 if zone_of_injury == "Zone III" else 0
-    lensectomy_binary = 1 if lensectomy == "Yes" else 0
-    uveal_prolapse_binary = 1 if uveal_prolapse == "Yes" else 0
-    white_binary = 1 if race == "White" else 0
-    black_binary = 1 if race == "Black" else 0
-    asian_binary = 1 if race == "Asian" else 0
-    indian_binary = 1 if race == "Indian" else 0
-    hawaiian_binary = 1 if race == "Hawaiian" else 0
-    hispanic_binary = 1 if hispanic == "Yes" else 0
-    fall_binary = 1 if fall == "Yes" else 0
-    projectile_binary = 1 if projectile == "Yes" else 0
-    nail_binary = 1 if nail == "Yes" else 0
-    blunt_binary = 1 if blunt == "Yes" else 0
-    glass_binary = 1 if glass == "Yes" else 0
-    assault_binary = 1 if assault == "Yes" else 0
-    wood_binary = 1 if wood == "Yes" else 0
-    mvc_binary = 1 if mvc == "Yes" else 0
-    wire_binary = 1 if wire == "Yes" else 0
-    knife_binary = 1 if knife == "Yes" else 0
-    metal_binary = 1 if metal == "Yes" else 0
+data = load_model()
+regressor = data["model"]
 
-    X = [
-        age, time, presenting_va, last_follow_up, sex_binary, eye_binary,
-        rupture_binary, penetration_binary, perforation_binary,
-        endophthalmitis_binary, retinal_detachment_binary, apd_binary,
-        iofb_binary, zone_i_binary, zone_ii_binary, zone_iii_binary,
-        lensectomy_binary, uveal_prolapse_binary, white_binary,
-        black_binary, asian_binary, indian_binary, hawaiian_binary,
-        hispanic_binary, fall_binary, projectile_binary, nail_binary,
-        blunt_binary, glass_binary, assault_binary, wood_binary,
-        mvc_binary, wire_binary, knife_binary, metal_binary
-    ]
+def show_predict_page():
+    st.title("Open Globe Visual Acuity Prediction")
 
-    df = pd.DataFrame([X], columns=names)
-    final_va = regressor.predict(df)
-    return final_va[0]
+    st.write("""### Please enter the following clinical information""")
 
-# UI
-st.title("Visual Acuity Prediction")
-st.write("Enter the following details to predict the visual acuity:")
+    return 
 
-# User inputs
+
+
+show_predict_page()
+
 age = st.slider("Age", 0, 100, 47)
-time = st.number_input("Time to Operating Room (minutes)", min_value=0, max_value=10000, value=30, step=1)
+time = st.slider("Time to Operating Room (minutes)", 0, 10000, 872, 15)
 presenting_va = st.slider("Presenting Visual Acuity (LogMAR)", 0.00, 3.00, 1.91, 0.01)
-last_follow_up = st.number_input("Time of Last Follow-up (in days)", min_value=0, max_value=365, value=30, step=1)
-sex = st.selectbox("Sex", ["Male", "Female"])
-eye = st.selectbox("Eye", ["OD", "OS"])
-rupture = st.selectbox("Rupture", ["No", "Yes"])
-penetration = st.selectbox("Penetration", ["No", "Yes"])
-perforation = st.selectbox("Perforation", ["No", "Yes"])
-endophthalmitis = st.selectbox("Endophthalmitis", ["No", "Yes"])
-retinal_detachment = st.selectbox("Retinal Detachment", ["No", "Yes"])
-apd = st.selectbox("Afferent Pupillary Defect (APD)", ["No", "Yes"])
-iofb = st.selectbox("Intraocular Foreign Body (IOFB)", ["No", "Yes"])
-zone_of_injury = st.selectbox("Zone of Injury", ["Zone I", "Zone II", "Zone III"])
-lensectomy = st.selectbox("Lensectomy", ["No", "Yes"])
-uveal_prolapse = st.selectbox("Uveal Prolapse", ["No", "Yes"])
-race = st.selectbox("Race", ["White", "Black", "Asian", "Indian", "Hawaiian"])
-fall = st.selectbox("Cause: Fall", ["No", "Yes"])
-projectile = st.selectbox("Cause: Projectile", ["No", "Yes"])
-nail = st.selectbox("Cause: Nail", ["No", "Yes"])
-blunt = st.selectbox("Cause: Blunt", ["No", "Yes"])
-glass = st.selectbox("Cause: Glass", ["No", "Yes"])
-assault = st.selectbox("Cause: Assault", ["No", "Yes"])
-wood = st.selectbox("Cause: Wood", ["No", "Yes"])
-mvc = st.selectbox("Cause: MVC", ["No", "Yes"])
-wire = st.selectbox("Cause: Wire", ["No", "Yes"])
-knife = st.selectbox("Cause: Knife", ["No", "Yes"])
-metal = st.selectbox("Cause: Metal", ["No", "Yes"])
+last_follow_up = st.slider("Months to Last Follow-Up", 0, 200, 16)
+sex = ("Male", "Female")
+sex_box = st.selectbox("Gender", sex)
+eye = ("OD", "OS")
+eye_box = st.selectbox("Eye", eye)
 
-if st.button("Predict"):
-    final_va = predict_visual_acuity(age, time, presenting_va, last_follow_up, sex, eye, rupture, penetration, perforation,
-                                     endophthalmitis, retinal_detachment, apd, iofb, zone_of_injury, lensectomy,
-                                     uveal_prolapse, race, fall, projectile, nail, blunt, glass, assault, wood,
-                                     mvc, wire, knife, metal)
-    st.success("Predicted Visual Acuity: " + str(final_va))
+rupture = ("No", "Yes")
+rupture_box = st.selectbox("Rupture", rupture)
+
+penetration = ("No", "Yes")
+penetration_box = st.selectbox("Penetration", penetration)
+
+perforation = ("No", "Yes")
+perforation_box = st.selectbox("Perforation", perforation)
+
+endophthalmitis = ("No", "Yes")
+endophthalmitis_box = st.selectbox("Endophthalmitis (Y/N)", endophthalmitis)
+
+retinal_detachment = ("No", "Yes")
+retinal_detachment_box = st.selectbox("Retinal Detachment (Y/N)", retinal_detachment)
+
+apd = ("No", "Yes")
+apd_box = st.selectbox("APD (Y/N)", apd)
+
+iofb = ("No", "Yes")
+iofb_box = st.selectbox("IOFB (Y/N)", iofb)
+
+zone_i = ("No", "Yes")
+zone_i_box = st.selectbox("Zone I", zone_i)
+
+zone_ii = ("No", "Yes")
+zone_ii_box = st.selectbox("Zone II", zone_ii)
+
+zone_iii = ("No", "Yes")
+zone_iii_box = st.selectbox("Zone III", zone_iii)
+
+lensectomy = ("No", "Yes")
+lensectomy_box = st.selectbox("Lensectomy (Y/N)", lensectomy)
+
+uveal_prolapse = ("No", "Yes")
+uveal_prolapse_box = st.selectbox("Uveal Prolapse (Y/N)", uveal_prolapse)
+
+white = ("No", "Yes")
+white_box = st.selectbox("White", white)
+
+black = ("No", "Yes")
+black_box = st.selectbox("Black", black)
+
+asian = ("No", "Yes")
+asian_box = st.selectbox("Asian", asian)
+
+indian = ("No", "Yes")
+indian_box = st.selectbox("Indian", indian)
+
+hawaiian = ("No", "Yes")
+hawaiian_box = st.selectbox("Hawaiian", hawaiian)
+
+hispanic = ("No", "Yes")
+hispanic_box = st.selectbox("Hispanic", hispanic)
+
+fall = ("No", "Yes")
+fall_box = st.selectbox("Fall", fall)
+
+projectile = ("No", "Yes")
+projectile_box = st.selectbox("Projectile", projectile)
+
+nail = ("No", "Yes")
+nail_box = st.selectbox("Nail", nail)
+
+blunt = ("No", "Yes")
+blunt_box = st.selectbox("Blunt", blunt)
+
+glass = ("No", "Yes")
+glass_box = st.selectbox("Glass", glass)
+
+assault = ("No", "Yes")
+assault_box = st.selectbox("Assault", assault)
+
+wood = ("No", "Yes")
+wood_box = st.selectbox("Wood", wood)
+
+mvc = ("No", "Yes")
+mvc_box = st.selectbox("MVC", mvc)
+
+wire = ("No", "Yes")
+wire_box = st.selectbox("Wire", wire)
+
+knife = ("No", "Yes")
+knife_box = st.selectbox("Knife", knife)
+
+metal = ("No", "Yes")
+metal_box = st.selectbox("Metal", metal)
+
+ok = st.button("Calculate Predicted Visual Acuity")
+if ok:
+
+    if sex == "Male":
+        sex_binary = 1
+    else:
+        sex_binary = 0
+
+    if eye == "OD":
+        eye_binary = 1
+    else:
+        eye_binary = 0
+
+    if rupture == "Yes":
+        rupture_binary = 1
+    else:
+        rupture_binary = 0
+
+    if penetration == "Yes":
+        penetration_binary = 1
+    else:
+        penetration_binary = 0
+
+    if perforation == "Yes":
+        perforation_binary = 1
+    else:
+        perforation_binary = 0
+
+    if endophthalmitis == "Yes":
+        endophthalmitis_binary = 1
+    else:
+        endophthalmitis_binary = 0
+
+    if retinal_detachment == "Yes":
+        retinal_detachment_binary = 1
+    else:
+        retinal_detachment_binary = 0
+
+    if apd == "Yes":
+        apd_binary = 1
+    else:
+        apd_binary = 0
+
+    if iofb == "Yes":
+        iofb_binary = 1
+    else:
+        iofb_binary = 0
+
+    if zone_i == "Yes":
+        zone_i_binary = 1
+    else:
+        zone_i_binary = 0
+
+    if zone_ii == "Yes":
+        zone_ii_binary = 1
+    else:
+        zone_ii_binary = 0
+
+    if zone_iii == "Yes":
+        zone_iii_binary = 1
+    else:
+        zone_iii_binary = 0
+
+    if lensectomy == "Yes":
+        lensectomy_binary = 1
+    else:
+        lensectomy_binary = 0
+
+    if uveal_prolapse == "Yes":
+        uveal_prolapse_binary = 1
+    else:
+        uveal_prolapse_binary = 0
+
+    if white == "Yes":
+        white_binary = 1
+    else:
+        white_binary = 0
+
+    if black == "Yes":
+        black_binary = 1
+    else:
+        black_binary = 0
+
+    if asian == "Yes":
+        asian_binary = 1
+    else:
+        asian_binary = 0
+
+    if indian == "Yes":
+        indian_binary = 1
+    else:
+        indian_binary = 0
+
+    if hawaiian == "Yes":
+        hawaiian_binary = 1
+    else:
+        hawaiian_binary = 0
+
+    if hispanic == "Yes":
+        hispanic_binary = 1
+    else:
+        hispanic_binary = 0
+
+    if fall == "Yes":
+        fall_binary = 1
+    else:
+        fall_binary = 0
+
+    if projectile == "Yes":
+        projectile_binary = 1
+    else:
+        projectile_binary = 0
+
+    if nail == "Yes":
+        nail_binary = 1
+    else:
+        nail_binary = 0
+
+    if blunt == "Yes":
+        blunt_binary = 1
+    else:
+        blunt_binary = 0
+
+    if glass == "Yes":
+        glass_binary = 1
+    else:
+        glass_binary = 0
+
+    if assault == "Yes":
+        assault_binary = 1
+    else:
+        assault_binary = 0
+
+    if wood == "Yes":
+        wood_binary = 1
+    else:
+        wood_binary = 0
+
+    if mvc == "Yes":
+        mvc_binary = 1
+    else:
+        mvc_binary = 0
+
+    if wire == "Yes":
+        wire_binary = 1
+    else:
+        wire_binary = 0
+
+    if knife == "Yes":
+        knife_binary = 1
+    else:
+        knife_binary = 0
+
+    if metal == "Yes":
+        metal_binary = 1
+    else:
+        metal_binary = 0
+    X = [age, time, presenting_va, last_follow_up, sex_binary, eye_binary, rupture_binary, penetration_binary, perforation_binary, endophthalmitis_binary, retinal_detachment_binary, apd_binary, iofb_binary, zone_i_binary, zone_ii_binary, zone_iii_binary, lensectomy_binary, uveal_prolapse_binary, white_binary, black_binary, asian_binary, indian_binary, hawaiian_binary, hispanic_binary, fall_binary, projectile_binary, nail_binary, blunt_binary, glass_binary, assault_binary, wood_binary, mvc_binary, wire_binary, knife_binary, metal_binary]
+    X_array = np.array(X)
+    names = [
+ #continuous inputs
+    'Age at time of injury', 
+    'Time to OR (minutes)',
+   # 'Year to OR at MEE',
+    'Presenting VA',
+    'Months to Last Follow-up',
+    #categorical inputs
+    'Sex', 
+    'Eye',     
+    'Rupture', 
+    'Penetration', 
+    'Perforation', 
+    'Endophthalmitis (Y/N)', 
+    'Retinal Detachment (Y/N)', 
+    'APD (Y/N)', 
+    'IOFB (Y/N)',
+    'Zone I',
+    'Zone II',
+    'Zone III',
+    'Lensectomy (Y/N)',
+    'Uveal Prolapse (Y/N)',
+    'White',
+    'Black',
+    'Asian',
+    'Indian',
+    'Hawaiian',
+    'Hispanic',
+    'Fall',
+    'Projectile',
+    'Nail',
+    'Blunt',
+    'Glass',
+    'Assault',
+    'Wood',
+    'MVC',
+    'Wire',
+    'Knife',
+    'Metal']
+
+    df = pd.DataFrame([X], columns=names);
+    final_va = regressor.predict(df)
+    st.subheader(f"The estimated visual acuity is {final_va[0]:.2f} (LogMAR)")
