@@ -82,14 +82,8 @@ apd_box = st.selectbox("APD (Y/N)", apd)
 iofb = ("No", "Yes")
 iofb_box = st.selectbox("IOFB (Y/N)", iofb)
 
-zone_i = ("No", "Yes")
-zone_i_box = st.selectbox("Zone I", zone_i)
-
-zone_ii = ("No", "Yes")
-zone_ii_box = st.selectbox("Zone II", zone_ii)
-
-zone_iii = ("No", "Yes")
-zone_iii_box = st.selectbox("Zone III", zone_iii)
+zone_options = ["Zone I", "Zone II", "Zone III"]
+zone = st.selectbox("Zone of Injury", zone_options)
 
 lensectomy = ("No", "Yes")
 lensectomy_box = st.selectbox("Lensectomy (Y/N)", lensectomy)
@@ -181,20 +175,18 @@ if ok:
     else:
         iofb_binary = 0
 
-    if zone_i == "Yes":
+    if zone == "Zone I":
         zone_i_binary = 1
+        zone_ii_binary = 0
+        zone_iii_binary = 0
+    elif zone == "Zone II":
+        zone_i_binary = 0
+        zone_ii_binary = 1
+        zone_iii_binary = 0
     else:
         zone_i_binary = 0
-
-    if zone_ii == "Yes":
-        zone_ii_binary = 1
-    else:
         zone_ii_binary = 0
-
-    if zone_iii == "Yes":
         zone_iii_binary = 1
-    else:
-        zone_iii_binary = 0
 
     if lensectomy == "Yes":
         lensectomy_binary = 1
