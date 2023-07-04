@@ -14,14 +14,20 @@ regressor = data["model"]
 def show_predict_page():
     st.title("Open Globe Visual Acuity Prediction")
 
-    #st.write("""### Please enter the following clinical information""")
+    st.write("""### Please enter the following clinical information""")
 
     return 
 
 
 
 show_predict_page()
-
+st.markdown(" ")
+st.markdown(" ")
+st.markdown(" ")
+st.markdown(" ")
+st.markdown(" ")
+st.markdown(" ")
+st.markdown(" ")
 st.write("""### Demographics:""")
 st.markdown("---")
 age = st.slider("Age", 0, 100, 47)
