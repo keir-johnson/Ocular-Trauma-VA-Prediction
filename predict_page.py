@@ -40,6 +40,9 @@ race_options = ["White", "Black", "Asian", "Native American", "Hawaiian"]
 race = st.selectbox("Race", race_options)
 race_values = [int(race_option == race) for race_option in race_options]
 
+hispanic = ("No", "Yes")
+hispanic_box = st.selectbox("Hispanic", hispanic)
+
 time = st.slider("Time to Operating Room (minutes)", 0, 10000, 872, 15)
 presenting_va = st.slider("Presenting Visual Acuity (LogMAR)", 0.00, 3.00, 1.91, 0.01)
 last_follow_up = 16
@@ -89,7 +92,7 @@ lensectomy_box = st.selectbox("Lensectomy (Y/N)", lensectomy)
 
 uveal_prolapse = ("No", "Yes")
 uveal_prolapse_box = st.selectbox("Uveal Prolapse (Y/N)", uveal_prolapse)
-
+"""
 white = ("No", "Yes")
 white_box = st.selectbox("White", white)
 
@@ -104,9 +107,9 @@ indian_box = st.selectbox("Indian", indian)
 
 hawaiian = ("No", "Yes")
 hawaiian_box = st.selectbox("Hawaiian", hawaiian)
+"""
 
-hispanic = ("No", "Yes")
-hispanic_box = st.selectbox("Hispanic", hispanic)
+
 
 fall = ("No", "Yes")
 fall_box = st.selectbox("Fall", fall)
@@ -214,6 +217,38 @@ if ok:
     else:
         uveal_prolapse_binary = 0
 
+    if race_options == "White":
+        white_binary = 1
+        black_binary = 0
+        asian_binary = 0
+        indian_binary = 0
+        hawaiian_binary = 0
+    elif race == "Black":
+        white_binary = 0
+        black_binary = 1
+        asian_binary = 0
+        indian_binary = 0
+        hawaiian_binary = 0
+    elif race == "Asian":
+        white_binary = 0
+        black_binary = 0
+        asian_binary = 1
+        indian_binary = 0
+        hawaiian_binary = 0
+    elif race == "Native American":
+        white_binary = 0
+        black_binary = 0
+        asian_binary = 0
+        indian_binary = 1
+        hawaiian_binary = 0
+  elif race == "Hawaiian":
+        white_binary = 0
+        black_binary = 0
+        asian_binary = 0
+        indian_binary = 0
+        hawaiian_binary = 1
+
+"""
     if white == "Yes":
         white_binary = 1
     else:
@@ -238,6 +273,7 @@ if ok:
         hawaiian_binary = 1
     else:
         hawaiian_binary = 0
+"""
 
     if hispanic == "Yes":
         hispanic_binary = 1
