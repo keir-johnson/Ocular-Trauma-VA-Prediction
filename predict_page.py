@@ -71,14 +71,9 @@ last_follow_up = 16
 eye = ("OD", "OS")
 eye_box = st.selectbox("Eye", eye)
 
-rupture = ("No", "Yes")
-rupture_box = st.selectbox("Rupture", rupture)
+injury_options = ["Rupture", "Penetration", "Perforation"]
+injury = st.selectbox("Injury Type", injury_options)
 
-penetration = ("No", "Yes")
-penetration_box = st.selectbox("Penetration", penetration)
-
-perforation = ("No", "Yes")
-perforation_box = st.selectbox("Perforation", perforation)
 
 endophthalmitis = ("No", "Yes")
 endophthalmitis_box = st.selectbox("Endophthalmitis", endophthalmitis)
@@ -157,21 +152,19 @@ if ok:
         eye_binary = 1
     else:
         eye_binary = 0
-
-    if rupture == "Yes":
+    
+    if injury == "Rupture":
         rupture_binary = 1
-    else:
-        rupture_binary = 0
-
-    if penetration == "Yes":
-        penetration_binary = 1
-    else:
         penetration_binary = 0
-
-    if perforation == "Yes":
-        perforation_binary = 1
-    else:
         perforation_binary = 0
+    elif injury == "Penetration":
+        rupture_binary = 0
+        penetration_binary = 1
+        perforation_binary = 0
+    elif injury == "Perforation":
+        rupture_binary = 0
+        penetration_binary = 0
+        perforation_binary = 1
 
     if endophthalmitis == "Yes":
         endophthalmitis_binary = 1
