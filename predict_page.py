@@ -183,7 +183,7 @@ if ok:
         zone_i_binary = 0
         zone_ii_binary = 1
         zone_iii_binary = 0
-    else:
+    elif zone == "Zone III":
         zone_i_binary = 0
         zone_ii_binary = 0
         zone_iii_binary = 1
