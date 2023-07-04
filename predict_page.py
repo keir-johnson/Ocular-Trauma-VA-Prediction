@@ -53,7 +53,7 @@ st.write("""### Injury Details:""")
 st.markdown("---")
 time = st.number_input("Time to Operating Room (minutes)", min_value=0, max_value=10000, value=872)
 
-presenting_va = st.slider("Presenting Visual Acuity (LogMAR)", 0.00, 3.00, 1.91, 0.01)
+presenting_va = st.number_input("Presenting Visual Acuity (LogMAR)", min_value=0.00, max_value=3.00, value=1.91)
 last_follow_up = 16
 
 
