@@ -81,25 +81,25 @@ perforation = ("No", "Yes")
 perforation_box = st.selectbox("Perforation", perforation)
 
 endophthalmitis = ("No", "Yes")
-endophthalmitis_box = st.selectbox("Endophthalmitis (Y/N)", endophthalmitis)
+endophthalmitis_box = st.selectbox("Endophthalmitis", endophthalmitis)
 
 retinal_detachment = ("No", "Yes")
-retinal_detachment_box = st.selectbox("Retinal Detachment (Y/N)", retinal_detachment)
+retinal_detachment_box = st.selectbox("Retinal Detachment", retinal_detachment)
 
 apd = ("No", "Yes")
-apd_box = st.selectbox("APD (Y/N)", apd)
+apd_box = st.selectbox("APD", apd)
 
 iofb = ("No", "Yes")
-iofb_box = st.selectbox("IOFB (Y/N)", iofb)
+iofb_box = st.selectbox("IOFB", iofb)
 
 zone_options = ["Zone I", "Zone II", "Zone III"]
 zone = st.selectbox("Zone of Injury", zone_options)
 
 lensectomy = ("No", "Yes")
-lensectomy_box = st.selectbox("Lensectomy (Y/N)", lensectomy)
+lensectomy_box = st.selectbox("Lensectomy", lensectomy)
 
 uveal_prolapse = ("No", "Yes")
-uveal_prolapse_box = st.selectbox("Uveal Prolapse (Y/N)", uveal_prolapse)
+uveal_prolapse_box = st.selectbox("Uveal Prolapse", uveal_prolapse)
 
 
 
