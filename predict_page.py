@@ -56,15 +56,15 @@ time = st.number_input("Time to Operating Room (minutes)", min_value=0, max_valu
 presenting_va = st.number_input("Presenting Visual Acuity (LogMAR)", min_value=0.00, max_value=3.00, value=1.91)
 
 data = {
-    'Snellen': ['20/200', '20/100', '20/70', '20/50', '20/40', '20/30', '20/25', '20/20'],
-    'LogMAR': [1.0, 0.7, 0.5, 0.4, 0.3, 0.2, 0.1, 0.0]
+    'Snellen': ['20/200', '20/160', '20/125', '20/100', '20/80', '20/63', '20/50', '20/40', '20/32', '20/25', '20/20', '20/16', '20/12.5', '20/10'],
+    'LogMAR': [1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0, -0.1, -0.2, -0.3]
 }
 
 df = pd.DataFrame(data)
 
 st.write("Common Snellen to LogMAR Conversions:")
+st.dataframe(df.style.hide_index())
 st.markdown("[More Info on logMAR visual acuity scale](https://en.wikipedia.org/wiki/LogMAR_chart)")
-st.dataframe(df)
 last_follow_up = 16
 
 
