@@ -63,7 +63,7 @@ data = {
 df = pd.DataFrame(data)
 
 st.write("Common Snellen to LogMAR Conversions:")
-st.dataframe(df.style.hide_index())
+st.dataframe(df)
 st.markdown("[More Info on logMAR visual acuity scale](https://en.wikipedia.org/wiki/LogMAR_chart)")
 last_follow_up = 16
 
