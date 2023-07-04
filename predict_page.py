@@ -198,31 +198,31 @@ if ok:
     else:
         uveal_prolapse_binary = 0
 
-    if race_options == "White":
+    if race == "White":
         white_binary = 1
         black_binary = 0
         asian_binary = 0
         indian_binary = 0
         hawaiian_binary = 0
-    elif race_options == "Black":
+    elif race == "Black":
         white_binary = 0
         black_binary = 1
         asian_binary = 0
         indian_binary = 0
         hawaiian_binary = 0
-    elif race_options == "Asian":
+    elif race == "Asian":
         white_binary = 0
         black_binary = 0
         asian_binary = 1
         indian_binary = 0
         hawaiian_binary = 0
-    elif race_options == "Native American":
+    elif race == "Native American":
         white_binary = 0
         black_binary = 0
         asian_binary = 0
         indian_binary = 1
         hawaiian_binary = 0
-    elif race_options == "Hawaiian":
+    elif race == "Hawaiian":
         white_binary = 0
         black_binary = 0
         asian_binary = 0
