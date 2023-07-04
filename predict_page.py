@@ -42,17 +42,20 @@ race_values = [int(race_option == race) for race_option in race_options]
 
 hispanic = ("No", "Yes")
 hispanic_box = st.selectbox("Hispanic", hispanic)
+st.markdown(" ")
+st.markdown(" ")
+st.markdown(" ")
+st.markdown(" ")
+st.markdown(" ")
+st.markdown(" ")
+st.markdown(" ")
+st.write("""### Injury Details:""")
+st.markdown("---")
+time = st.number_input("Time to Operating Room (minutes)", min_value=0, max_value=10000, value=872)
 
-time = st.slider("Time to Operating Room (minutes)", 0, 10000, 872, 15)
 presenting_va = st.slider("Presenting Visual Acuity (LogMAR)", 0.00, 3.00, 1.91, 0.01)
 last_follow_up = 16
-st.markdown(" ")
-st.markdown(" ")
-st.markdown(" ")
-st.markdown(" ")
-st.markdown(" ")
-st.markdown(" ")
-st.markdown(" ")
+
 
 eye = ("OD", "OS")
 eye_box = st.selectbox("Eye", eye)
