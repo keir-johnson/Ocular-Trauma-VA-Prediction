@@ -22,6 +22,7 @@ def show_predict_page():
 
 show_predict_page()
 
+st.write("""### Demographics""")
 age = st.slider("Age", 0, 100, 47)
 time = st.slider("Time to Operating Room (minutes)", 0, 10000, 872, 15)
 presenting_va = st.slider("Presenting Visual Acuity (LogMAR)", 0.00, 3.00, 1.91, 0.01)
