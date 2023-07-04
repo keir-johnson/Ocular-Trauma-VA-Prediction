@@ -241,7 +241,7 @@ if ok:
         asian_binary = 0
         indian_binary = 1
         hawaiian_binary = 0
-  elif race == "Hawaiian":
+    elif race == "Hawaiian":
         white_binary = 0
         black_binary = 0
         asian_binary = 0
