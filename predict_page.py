@@ -223,25 +223,25 @@ if ok:
         asian_binary = 0
         indian_binary = 0
         hawaiian_binary = 0
-    elif race == "Black":
+    elif race_options == "Black":
         white_binary = 0
         black_binary = 1
         asian_binary = 0
         indian_binary = 0
         hawaiian_binary = 0
-    elif race == "Asian":
+    elif race_options == "Asian":
         white_binary = 0
         black_binary = 0
         asian_binary = 1
         indian_binary = 0
         hawaiian_binary = 0
-    elif race == "Native American":
+    elif race_options == "Native American":
         white_binary = 0
         black_binary = 0
         asian_binary = 0
         indian_binary = 1
         hawaiian_binary = 0
-    elif race == "Hawaiian":
+    elif race_options == "Hawaiian":
         white_binary = 0
         black_binary = 0
         asian_binary = 0
@@ -254,32 +254,6 @@ if ok:
         indian_binary = 0
         hawaiian_binary = 0
 
-"""
-    if white == "Yes":
-        white_binary = 1
-    else:
-        white_binary = 0
-
-    if black == "Yes":
-        black_binary = 1
-    else:
-        black_binary = 0
-
-    if asian == "Yes":
-        asian_binary = 1
-    else:
-        asian_binary = 0
-
-    if indian == "Yes":
-        indian_binary = 1
-    else:
-        indian_binary = 0
-
-    if hawaiian == "Yes":
-        hawaiian_binary = 1
-    else:
-        hawaiian_binary = 0
-"""
     if hispanic == "Yes":
         hispanic_binary = 1
     else:
