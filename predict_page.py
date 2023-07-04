@@ -102,7 +102,15 @@ uveal_prolapse = ("No", "Yes")
 uveal_prolapse_box = st.selectbox("Uveal Prolapse", uveal_prolapse)
 
 
-
+st.markdown(" ")
+st.markdown(" ")
+st.markdown(" ")
+st.markdown(" ")
+st.markdown(" ")
+st.markdown(" ")
+st.markdown(" ")
+st.write("""### Mechanism of Injury:""")
+st.markdown("---")
 
 fall = ("No", "Yes")
 fall_box = st.selectbox("Fall", fall)
