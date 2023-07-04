@@ -247,6 +247,12 @@ if ok:
         asian_binary = 0
         indian_binary = 0
         hawaiian_binary = 1
+    else:
+        white_binary = 0
+        black_binary = 0
+        asian_binary = 0
+        indian_binary = 0
+        hawaiian_binary = 0
 
 """
     if white == "Yes":
@@ -274,7 +280,10 @@ if ok:
     else:
         hawaiian_binary = 0
 """
-
+    if hispanic == "Yes":
+        hispanic_binary = 1
+    else:
+        hispanic_binary = 0
 
     if fall == "Yes":
         fall_binary = 1
