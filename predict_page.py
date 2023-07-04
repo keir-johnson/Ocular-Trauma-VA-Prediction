@@ -40,8 +40,8 @@ race_options = ["White", "Black", "Asian", "Native American", "Hawaiian"]
 race = st.selectbox("Race", race_options)
 race_values = [int(race_option == race) for race_option in race_options]
 
-hispanic = ("No", "Yes")
-hispanic_box = st.selectbox("Hispanic", hispanic)
+hispanic = ("Hispanic", "Non-Hispanic")
+hispanic_box = st.selectbox("Ethnicity", hispanic)
 st.markdown(" ")
 st.markdown(" ")
 st.markdown(" ")
@@ -246,7 +246,7 @@ if ok:
         indian_binary = 0
         hawaiian_binary = 0
 
-    if hispanic == "Yes":
+    if hispanic == "Hispanic":
         hispanic_binary = 1
     else:
         hispanic_binary = 0
