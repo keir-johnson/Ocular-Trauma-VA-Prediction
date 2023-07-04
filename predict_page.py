@@ -30,7 +30,16 @@ st.markdown(" ")
 st.markdown(" ")
 st.write("""### Demographics:""")
 st.markdown("---")
+
 age = st.slider("Age", 0, 100, 47)
+
+sex = ("Male", "Female")
+sex_box = st.selectbox("Gender", sex)
+
+race_options = ["White", "Black", "Asian", "Native American", "Hawaiian"]
+race = st.selectbox("Race", race_options)
+race_values = [int(race_option == race) for race_option in race_options]
+
 time = st.slider("Time to Operating Room (minutes)", 0, 10000, 872, 15)
 presenting_va = st.slider("Presenting Visual Acuity (LogMAR)", 0.00, 3.00, 1.91, 0.01)
 last_follow_up = 16
@@ -41,8 +50,7 @@ st.markdown(" ")
 st.markdown(" ")
 st.markdown(" ")
 st.markdown(" ")
-sex = ("Male", "Female")
-sex_box = st.selectbox("Gender", sex)
+
 eye = ("OD", "OS")
 eye_box = st.selectbox("Eye", eye)
 
@@ -290,7 +298,7 @@ if ok:
         metal_binary = 1
     else:
         metal_binary = 0
-    X = [age, time, presenting_va, last_follow_up, sex_binary, eye_binary, rupture_binary, penetration_binary, perforation_binary, endophthalmitis_binary, retinal_detachment_binary, apd_binary, iofb_binary, zone_i_binary, zone_ii_binary, zone_iii_binary, lensectomy_binary, uveal_prolapse_binary, white_binary, black_binary, asian_binary, indian_binary, hawaiian_binary, hispanic_binary, fall_binary, projectile_binary, nail_binary, blunt_binary, glass_binary, assault_binary, wood_binary, mvc_binary, wire_binary, knife_binary, metal_binary]
+    X = [age, time, presenting_va, last_follow_up, sex_binary, eye_binary, rupture_binary, penetration_binary, perforation_binary, endophthalmitis_binary, retinal_detachment_binary, apd_binary, iofb_binary, zone_i_binary, zone_ii_binary, zone_iii_binary, lensectomy_binary, uveal_prolapse_binary] + race_values [hispanic_binary, fall_binary, projectile_binary, nail_binary, blunt_binary, glass_binary, assault_binary, wood_binary, mvc_binary, wire_binary, knife_binary, metal_binary]
     X_array = np.array(X)
     names = [
  #continuous inputs
