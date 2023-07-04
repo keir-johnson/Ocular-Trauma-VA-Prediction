@@ -96,22 +96,7 @@ lensectomy_box = st.selectbox("Lensectomy (Y/N)", lensectomy)
 
 uveal_prolapse = ("No", "Yes")
 uveal_prolapse_box = st.selectbox("Uveal Prolapse (Y/N)", uveal_prolapse)
-"""
-white = ("No", "Yes")
-white_box = st.selectbox("White", white)
 
-black = ("No", "Yes")
-black_box = st.selectbox("Black", black)
-
-asian = ("No", "Yes")
-asian_box = st.selectbox("Asian", asian)
-
-indian = ("No", "Yes")
-indian_box = st.selectbox("Indian", indian)
-
-hawaiian = ("No", "Yes")
-hawaiian_box = st.selectbox("Hawaiian", hawaiian)
-"""
 
 
 
