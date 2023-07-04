@@ -93,7 +93,7 @@ iofb = ("No", "Yes")
 iofb_box = st.selectbox("IOFB", iofb)
 
 zone_options = ["Zone I", "Zone II", "Zone III"]
-zone = st.selectbox("Zone of Injury", zone_options)
+zone = st.selectbox("Maximal Zone of Injury", zone_options)
 
 lensectomy = ("No", "Yes")
 lensectomy_box = st.selectbox("Lensectomy", lensectomy)
